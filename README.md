@@ -1,10 +1,14 @@
-# School bridge
+# 107MCP
 
 通过 Tailscale 和 Windows-MCP，允许 macOS 上的 Codex 使用 Windows 主机已经认证的 PuTTY/Plink SSH 共享连接。客户端不需要学校服务器私钥或验证码。
 
 ## 同事的 Mac：让 Codex 自动配置
 
-先安装 Tailscale 并接受 Windows 设备的共享邀请。然后把本仓库交给 Mac 上的 Codex，并要求它运行 `mac/setup.sh`。脚本会要求输入 Windows 的 Tailscale IPv4 地址，检查现有 Codex 配置，并在不覆盖原配置的情况下添加 `school` MCP。已有同名配置时它会停止，不会覆盖。
+先安装 Tailscale 并接受 Windows 设备的共享邀请。然后可以将以下内容交给 Mac 上的 Codex：
+
+> 请克隆 https://github.com/Qesire/107MCP，阅读 README 并帮我配置 school MCP。保留已有配置；需要 Tailscale 登录、设备共享、Windows 主机地址和 MCP 密码时请让我提供。运行 `bash mac/setup.sh`，完成后检查 MCP 是否连接并只读执行服务器 `hostname`。
+
+脚本会要求输入 Windows 的 Tailscale IPv4 地址，检查现有 Codex 配置，并在不覆盖原配置的情况下添加 `school` MCP。已有同名配置时它会停止，不会覆盖。脚本需要 Python 3.11 或更高版本以及已安装的 Codex CLI。
 
 配置后，运行 `~/.local/bin/school-codex`，输入 Windows 主机设置的 MCP 密码，启动 Codex。密码仅保存在当前进程的环境中，每次启动时输入；桌面应用不能保证继承终端变量。
 
